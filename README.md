@@ -49,7 +49,7 @@ Scan QR Code yang muncul atau tunggu Pairing Code (jika diaktifkan).
 Agar bot tetap jalan walau terminal ditutup:
 ```bash
 sudo npm install -g pm2
-pm2 start index.js --name "faris-bot"
+pm2 start index.js --name "Bot-Acumalaka"
 pm2 save
 pm2 startup
 ```
