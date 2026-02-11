@@ -18,23 +18,27 @@ export default {
         const chatId = m.chat || m.key.remoteJid;
         if (!chatId) return;
 
-        // --- 2. DATA USER ---
+        // --- 2. LOGIKA DETEKSI NAMA (LEBIH KUAT) ---
+        // Cek variable pushName, kalau kosong cek m.pushName, kalau kosong pakai 'Tanpa Nama'
+        const namaUser = pushName || m.pushName || 'Tanpa Nama';
+
+        // --- 3. DATA LAINNYA ---
         const timeWIB = new Date().toLocaleTimeString('id-ID', { timeZone: 'Asia/Jakarta' });
         const senderNumber = sender.split('@')[0];
         const status = isOwner ? '👑 Owner (God Mode)' : '⚔️ User';
         const botRuntime = runtime(process.uptime());
 
-        // --- 3. ISI MENU ---
+        // --- 4. ISI MENU ---
         let menuText = `
 🌸 *I N F O   U S E R* 🌸
 ────────────────────
-🍩 *Nama  :* ${pushName || 'Tanpa Nama'}
+🍩 *Nama  :* ${namaUser}
 📱 *Nomor :* ${senderNumber}
 🎟️ *Status:* ${status}
 ⏰ *Jam   :* ${timeWIB}
 ⏱️ *Uptime:* ${botRuntime}
 
-Halo Bos! 👋
+Halo ${namaUser}! 👋
 
 🤖 *D A F T A R   F I T U R*
 ────────────────────
@@ -77,7 +81,7 @@ Halo Bos! 👋
 Created By Faris Suka Mie Ayam🔥🚀
 `;
 
-        // --- 4. CONFIG GAMBAR BARU ---
+        // --- 5. CONFIG GAMBAR ---
         const imageUrl = 'https://files.catbox.moe/2txmah.jpg'; 
 
         try {
